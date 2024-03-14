@@ -1,0 +1,22 @@
+@page "/EmployeeOverview"
+@using BethanysPieShopHRM.Shared.Domain
+
+<h2>Employee Overview</h2>
+
+@if (Employees == null)
+{
+    <TelerikLoader
+        Type="LoaderType.InfiniteSpinner"
+        Size="@ThemeConstants.Loader.Size.Medium">
+    </TelerikLoader>
+}
+else
+{
+    <TelerikGrid Data="@Employees" Height="500px" Pageable="true" Sortable="true">
+        <GridColumns>
+            <GridColumn Field=@nameof(Employee.EmployeeId) Title="ID" Width="120px"/>
+            <GridColumn Field=@nameof(Employee.FirstName) Title="FirstName"/>
+            <GridColumn Field=@nameof(Employee.LastName) Title="LastName"/>
+        </GridColumns>
+    </TelerikGrid>
+}
