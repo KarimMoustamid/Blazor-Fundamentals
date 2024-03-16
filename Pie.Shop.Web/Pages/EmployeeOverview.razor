@@ -14,6 +14,17 @@ else
 {
     <TelerikGrid Data="@Employees" Height="500px" Pageable="true" Sortable="true">
         <GridColumns>
+            <GridColumn Field="" Title="Avatar">
+                <Template>
+                    @{
+                        var employee = (context as Employee);
+                        <TelerikAvatar Type="AvatarType.Image">
+                            <img src="https://gillcleerenpluralsight.blob.core.windows.net/person/@(employee?.EmployeeId)-small.jpg"/>
+                        </TelerikAvatar>
+                    }
+                </Template>
+            </GridColumn>
+            <GridColumn Field=@nameof(Employee.EmployeeId) Title="ID" Width="120px"/>
             <GridColumn Field=@nameof(Employee.EmployeeId) Title="ID" Width="120px"/>
             <GridColumn Field=@nameof(Employee.FirstName) Title="FirstName"/>
             <GridColumn Field=@nameof(Employee.LastName) Title="LastName"/>
